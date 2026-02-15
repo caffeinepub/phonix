@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Rebuild/redesign the PHONIX app completely, using references from popular apps, removing any \"coming soon\" elements, and ensuring all features work smoothly at production-quality polish.",
+  "architectural_notes": [
+    "Plan redesign via competitive references (\"reference of all apps\") to guide UI/UX direction before rebuilding.",
+    "Set the app’s initial/default route to a camera-first, full-screen Camera experience on launch."
+  ],
+  "known_issues": [
+    "User dissatisfaction with current app design; requests a complete change/overhaul."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-redesign-the-entire-phonix-frontend-ui-ux-using-a-coherent-best-of-popular-apps-reference-approach-social-camera-reels-stories-gallery-editor-ensuring-a-consistent-visual-system-colors-typography-spacing-shadows-motion-across-all-screens-and-states-without-changing-the-core-feature-set",
+      "title": "Redesign the entire PHONIX frontend UI/UX using a coherent “best-of popular apps” reference approach (social camera + reels/stories + gallery/editor), ensuring a consistent visual system (colors, typography, spacing, shadows, motion) across all screens and states, without changing the core feature set.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-any-and-all-coming-soon-messaging-placeholder-ctas-or-non-functional-ui-elements-across-the-entire-app-for-each-item-either-implement-the-full-working-flow-or-remove-it-from-navigation-and-ui-so-users-never-encounter-a-dead-end",
+      "title": "Remove any and all \"Coming soon\" messaging, placeholder CTAs, or non-functional UI elements across the entire app; for each item, either implement the full working flow or remove it from navigation and UI so users never encounter a dead-end.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-upgrade-navigation-and-information-architecture-to-match-modern-reference-apps-keep-the-camera-as-a-first-class-full-screen-experience-while-ensuring-all-other-windows-render-in-a-polished-app-shell-with-predictable-navigation-on-both-mobile-bottom-navigation-and-desktop-sidebar",
+      "title": "Upgrade navigation and information architecture to match modern reference apps: keep the Camera as a first-class full-screen experience, while ensuring all other windows render in a polished app shell with predictable navigation on both mobile (bottom navigation) and desktop (sidebar).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-all-currently-present-social-feed-experiences-production-grade-by-backing-them-with-real-backend-persistence-and-retrieval-instead-of-purely-local-mock-state-for-at-least-stories-entertainment-posts-and-nearby-posts-including-support-for-creating-entries-listing-entries-and-basic-interactions-likes-comments-where-the-ui-exposes-those-actions",
+      "title": "Make all currently-present social/feed experiences production-grade by backing them with real backend persistence and retrieval (instead of purely local/mock state) for at least: stories, entertainment posts, and nearby posts, including support for creating entries, listing entries, and basic interactions (likes/comments) where the UI exposes those actions.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-harden-and-polish-the-media-pipeline-end-to-end-camera-capture-recording-saving-to-backend-blob-storage-gallery-listing-media-detail-preview-and-handoff-into-enhance-advanced-edit-ai-tools-should-all-be-stable-fast-and-error-tolerant",
+      "title": "Harden and polish the media pipeline end-to-end: camera capture/recording, saving to backend blob storage, gallery listing, media detail preview, and handoff into Enhance/Advanced Edit/AI Tools should all be stable, fast, and error-tolerant.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refine-authentication-profile-experience-to-match-reference-app-expectations-seamless-internet-identity-login-clear-guest-vs-authenticated-capabilities-and-a-polished-profile-setup-edit-flow-that-never-blocks-navigation-unexpectedly",
+      "title": "Refine authentication/profile experience to match reference app expectations: seamless Internet Identity login, clear guest vs authenticated capabilities, and a polished profile setup/edit flow that never blocks navigation unexpectedly.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-and-apply-one-upgraded-premium-theme-set-light-dark-or-multi-theme-that-feels-like-a-modern-flagship-app-and-ensure-all-screens-components-use-it-consistently-including-the-camera-overlays-sidebar-bottom-nav-cards-and-dialogs",
+      "title": "Create and apply one upgraded premium theme set (light/dark or multi-theme) that feels like a modern flagship app, and ensure all screens/components use it consistently (including the camera overlays, sidebar, bottom nav, cards, and dialogs).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-change-the-app-launch-flow-so-that-the-camera-is-the-default-starting-view-for-all-users-authenticated-guest-and-logged-out-and-it-renders-as-a-full-screen-big-camera-experience-no-header-sidebar-container-padding-immediately-after-the-intro-splash-completes",
+      "title": "Change the app launch flow so that the Camera is the default starting view for all users (authenticated, guest, and logged-out), and it renders as a full-screen “big camera” experience (no header/sidebar/container padding) immediately after the intro splash completes.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-current-automatic-redirect-that-forces-logged-out-users-to-the-login-screen-on-startup-instead-keep-the-user-on-the-full-screen-camera-and-provide-a-clear-non-blocking-authentication-prompt-on-the-camera-experience-e-g-an-overlay-or-button-group-to-either-sign-in-with-internet-identity-or-continue-as-guest",
+      "title": "Remove the current automatic redirect that forces logged-out users to the Login screen on startup; instead, keep the user on the full-screen Camera and provide a clear, non-blocking authentication prompt on the camera experience (e.g., an overlay or button group) to either sign in with Internet Identity or continue as guest.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-camera-actions-behave-safely-when-the-user-is-not-authenticated-allow-viewing-the-camera-preview-but-when-the-user-attempts-actions-that-require-identity-backed-persistence-e-g-saving-captured-media-show-an-english-message-explaining-they-must-sign-in-to-save-to-gallery-or-offer-to-continue-as-guest-where-applicable",
+      "title": "Ensure camera actions behave safely when the user is not authenticated: allow viewing the camera preview, but when the user attempts actions that require identity-backed persistence (e.g., saving captured media), show an English message explaining they must sign in to save to Gallery (or offer to continue as guest where applicable).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Complete app overhaul/redesign using references from popular apps (full UI/UX changes).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Remove all \"coming soon\" placeholders and make all advertised features fully functional and polished.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "On app launch, show a large/full-screen Camera as the default starting view (camera-first experience).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "PHONIX",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

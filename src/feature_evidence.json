@@ -1,0 +1,75 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-change-the-app-launch-flow-so-that-the-camera-is-the-default-starting-view-for-all-users-authenticated-guest-and-logged-out-and-it-renders-as-a-full-screen-big-camera-experience-no-header-sidebar-container-padding-immediately-after-the-intro-splash-completes",
+      "featureTitle": "Change the app launch flow so that the Camera is the default starting view for all users (authenticated, guest, and logged-out), and it renders as a full-screen “big camera” experience (no header/sidebar/container padding) immediately after the intro splash completes.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CameraView.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "authorization@4.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-current-automatic-redirect-that-forces-logged-out-users-to-the-login-screen-on-startup-instead-keep-the-user-on-the-full-screen-camera-and-provide-a-clear-non-blocking-authentication-prompt-on-the-camera-experience-e-g-an-overlay-or-button-group-to-either-sign-in-with-internet-identity-or-continue-as-guest",
+      "featureTitle": "Remove the current automatic redirect that forces logged-out users to the Login screen on startup; instead, keep the user on the full-screen Camera and provide a clear, non-blocking authentication prompt on the camera experience (e.g., an overlay or button group) to either sign in with Internet Identity or continue as guest.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CameraView.tsx",
+        "frontend/src/components/GlobalSidebar.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "authorization@4.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-camera-actions-behave-safely-when-the-user-is-not-authenticated-allow-viewing-the-camera-preview-but-when-the-user-attempts-actions-that-require-identity-backed-persistence-e-g-saving-captured-media-show-an-english-message-explaining-they-must-sign-in-to-save-to-gallery-or-offer-to-continue-as-guest-where-applicable",
+      "featureTitle": "Ensure camera actions behave safely when the user is not authenticated: allow viewing the camera preview, but when the user attempts actions that require identity-backed persistence (e.g., saving captured media), show an English message explaining they must sign in to save to Gallery (or offer to continue as guest where applicable).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/CameraView.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "camera@1.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "authorization@4.0.0",
+        "http-outcalls@3.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

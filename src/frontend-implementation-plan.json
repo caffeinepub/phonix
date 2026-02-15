@@ -1,0 +1,75 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Make full-screen Camera the default start view with non-blocking auth prompt",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Make Camera the default view after intro splash and render it full-screen without app shell chrome.",
+      "acceptanceCriteria": [
+        "After the intro splash finishes, the app shows the camera preview full-screen by default (no app shell chrome).",
+        "This is true even when the user is not authenticated and has not enabled guest mode.",
+        "The camera screen does not render inside the padded container layout used by non-camera windows."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update post-splash launch flow so the initial window remains 'camera' for all users, and ensure the camera view renders outside the Header/Sidebar/container padded layout (i.e., no header/sidebar/footer/container padding when activeWindow is camera)."
+        },
+        {
+          "path": "frontend/src/components/CameraView.tsx",
+          "operation": "modify",
+          "description": "Ensure the camera preview is always rendered as a stable full-screen experience (fixed inset layout, explicit non-zero dimensions) and continues to use the selected `camera` component hook (`useCamera`) for preview/capture behavior. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Remove startup redirect to Login and add a non-blocking auth prompt overlay on the full-screen camera.",
+      "acceptanceCriteria": [
+        "On a fresh load while logged out, the app stays on the Camera view (it does not automatically switch to the Login view).",
+        "The camera experience provides obvious actions to: (1) Sign in with Internet Identity, and (2) Continue as Guest.",
+        "The authentication prompt does not prevent viewing the camera preview."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the effect/logic that automatically forces logged-out, non-guest users into the Login view on startup, and adjust render logic so CameraView remains visible when logged out. Wire CameraView with callbacks to trigger Internet Identity sign-in and to enable guest mode without leaving the camera."
+        },
+        {
+          "path": "frontend/src/components/CameraView.tsx",
+          "operation": "modify",
+          "description": "Add a clear, non-blocking authentication prompt UI on top of the live camera preview when the user is logged out (e.g., overlay panel/button group) with actions to Sign in (using Internet Identity) or Continue as Guest. Keep overlay non-modal so preview remains visible. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/GlobalSidebar.tsx",
+          "operation": "modify",
+          "description": "Adjust navigation gating so the Camera item is available in guest mode (camera should not be treated as authRequired), ensuring guest users can always navigate back to the camera."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Gate identity-backed persistence actions from the camera when logged out while keeping preview usable and error-free.",
+      "acceptanceCriteria": [
+        "Logged-out users can see the live camera preview.",
+        "If a logged-out user attempts a save/persist action, the UI shows an English error/info message indicating sign-in is required to save.",
+        "No runtime errors occur from identity-required code paths when the user is logged out."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CameraView.tsx",
+          "operation": "modify",
+          "description": "Harden camera action handlers to safely handle logged-out/anonymous users: allow preview and local capture/recording UI, but when an identity-backed persistence action would occur (e.g., saving recorded media to Gallery), show an English toast/message like \"Please sign in to save to Gallery\" (and/or offer Continue as Guest where appropriate) and avoid calling identity-required save logic. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Align guest/auth state transitions with the new camera-first flow (e.g., logout should return to camera rather than login, and enabling guest mode should keep the user on camera by default) to prevent identity-required flows from triggering inadvertently while logged out."
+        }
+      ]
+    }
+  ]
+}

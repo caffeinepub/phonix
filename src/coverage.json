@@ -1,0 +1,69 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T08:48:55.753Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Ensure camera actions behave safely when the user is not authenticated: allow viewing the camera preview, but when the user attempts actions that require identity-backed persistence (e.g., saving captured media), show an English message explaining they must sign in to save to Gallery (or offer to continue as guest where applicable).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CameraView.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CameraView.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Change the app launch flow so that the Camera is the default starting view for all users (authenticated, guest, and logged-out), and it renders as a full-screen “big camera” experience (no header/sidebar/container padding) immediately after the intro splash completes.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/CameraView.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/CameraView.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Remove the current automatic redirect that forces logged-out users to the Login screen on startup; instead, keep the user on the full-screen Camera and provide a clear, non-blocking authentication prompt on the camera experience (e.g., an overlay or button group) to either sign in with Internet Identity or continue as guest.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/CameraView.tsx",
+          "frontend/src/components/GlobalSidebar.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/CameraView.tsx",
+          "frontend/src/components/GlobalSidebar.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/CameraView.tsx",
+    "frontend/src/components/GlobalSidebar.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "build_request",
+  "title": "Make Camera the full-screen default start experience",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Change the app launch flow so that the Camera is the default starting view for all users (authenticated, guest, and logged-out), and it renders as a full-screen “big camera” experience (no header/sidebar/container padding) immediately after the intro splash completes.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "on sarting give all and big camera with it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "After the intro splash finishes, the app shows the camera preview full-screen by default (no app shell chrome).",
+        "This is true even when the user is not authenticated and has not enabled guest mode.",
+        "The camera screen does not render inside the padded container layout used by non-camera windows."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Remove the current automatic redirect that forces logged-out users to the Login screen on startup; instead, keep the user on the full-screen Camera and provide a clear, non-blocking authentication prompt on the camera experience (e.g., an overlay or button group) to either sign in with Internet Identity or continue as guest.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "on sarting give all and big camera with it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On a fresh load while logged out, the app stays on the Camera view (it does not automatically switch to the Login view).",
+        "The camera experience provides obvious actions to: (1) Sign in with Internet Identity, and (2) Continue as Guest.",
+        "The authentication prompt does not prevent viewing the camera preview."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Ensure camera actions behave safely when the user is not authenticated: allow viewing the camera preview, but when the user attempts actions that require identity-backed persistence (e.g., saving captured media), show an English message explaining they must sign in to save to Gallery (or offer to continue as guest where applicable).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "on sarting give all and big camera with it"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Logged-out users can see the live camera preview.",
+        "If a logged-out user attempts a save/persist action, the UI shows an English error/info message indicating sign-in is required to save.",
+        "No runtime errors occur from identity-required code paths when the user is logged out."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui or any frontend immutablePaths listed in SYSTEM_CONTEXT.",
+    "Keep the backend architecture as a single Motoko actor; no new backend services."
+  ],
+  "nonGoals": [
+    "Do not add new app features beyond changing the initial launch/default view and related auth gating.",
+    "Do not redesign unrelated screens (Gallery/Stories/Entertainment/etc.) as part of this request.",
+    "Do not change backend schemas or add migrations unless strictly required (not expected for this change)."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
